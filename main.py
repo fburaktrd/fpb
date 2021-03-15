@@ -14,13 +14,13 @@ bot = commands.Bot(command_prefix='!')
 @bot.command(name="latest")
 async def news(ctx):
     message='Son haberler şu şekildedir:\n'
-    with open('fpb/newest1.txt','r') as d:
+    with open('newest1.txt','r') as d:
         message += "1-->" + d.readlines()[0]
         await ctx.send(message)
-    with open('fpb/newest2.txt','r') as d:
+    with open('newest2.txt','r') as d:
         message = "2-->" + d.readlines()[0]
         await ctx.send(message)
-    with open('fpb/newest3.txt','r') as d:
+    with open('newest3.txt','r') as d:
         message = "3-->" + d.readlines()[0]
         await ctx.send(message)
 @bot.event
@@ -30,21 +30,21 @@ async def on_ready():
     while True:
         news1,news2,news3 = getinfo.get()
         messagee='Yeni bir haber vaar ! \n'
-        with open('fpb/newest1.txt','r+') as d:
+        with open('newest1.txt','r+') as d:
             news= d.readlines()[0]
             d.seek(0)
             if news != news1:
                 d.truncate()
                 d.write(news1)
                 await channel.send(messagee+news1)
-        with open('fpb/newest2.txt','r+') as d:
+        with open('newest2.txt','r+') as d:
             news= d.readlines()[0]
             d.seek(0)
             if news != news2:
                 d.truncate()
                 d.write(news2)
                 await channel.send(messagee+news2)
-        with open('fpb/newest3.txt','r+') as d:
+        with open('newest3.txt','r+') as d:
             news= d.readlines()[0]
             d.seek(0)
             if news != news3:
