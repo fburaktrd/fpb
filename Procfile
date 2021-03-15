@@ -1,1 +1,1 @@
-worker: python fpb/main.py
+worker: python main.py
